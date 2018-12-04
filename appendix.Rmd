@@ -1,0 +1,65 @@
+---
+title: "appendix"
+output: pdf_document
+---
+
+
+\newpage
+## Appendix
+
+```{r, echo=FALSE, warning=FALSE,fig.height=6, fig.width=6, fig.cap = "Age of Node vs. Degree (Log-Log Scale)"}
+source("/Users/MacUser/Desktop/Network/Final Project/Functions.R")
+
+load("/Users/MacUser/Desktop/Network/Final Project/updated_graphs.RData")
+bit_edge <- read.csv("/Users/MacUser/Desktop/Network/Final Project/soc-sign-bitcoinotc.csv", header = FALSE)
+bit_edge <- bit_edge[,-4]
+#All edges
+in_degree_real <- colSums(bit_adj)
+out_degree_real <- rowSums(bit_adj)
+in_degree_sim <- colSums(sim_bit$adj)
+out_degree_sim <- rowSums(sim_bit$adj)
+
+#First 10,000(or something else) edges
+test <- Partition(matrix = bit_edge, K = 4)
+test0 <- test[1]
+test0 <- graph.data.frame(test0, directed=TRUE)
+test0 <- matrix(as_adjacency_matrix(test0), nrow = dim(as_adjacency_matrix(test0))[1], 
+                ncol = dim(as_adjacency_matrix(test0))[1])
+real0_in <- colSums(test0); real0_out <- rowSums(test0)
+
+test_sim <- Partition(matrix = sim_bit$edge_list, K = 4)
+test0_sim <- graph.data.frame(test_sim[1], directed=TRUE)
+test0_sim <- matrix(as_adjacency_matrix(test0_sim), nrow = dim(as_adjacency_matrix(test0_sim))[1],
+                ncol = dim(as_adjacency_matrix(test0_sim))[1])
+sim0_in <- colSums(test0_sim); sim0_out <- rowSums(test0_sim)
+
+
+par(mfrow=c(2,2)) 
+par(mar = c(3,2.5,2.5,2.5))
+plot(y = in_degree_real, x = V(bit_graph)$in_age, log = "xy", col = "red",  cex = 0.05, cex.lab = 0.1, 
+     xlab = "", ylab = "", main = "Node In-Degree Age vs. In-Degree", cex.main = 0.7, cex.axis = 0.5)
+points(y = in_degree_sim, x = V(sim_bit_g)$in_age, log = "xy", col = "blue", cex = 0.05, cex.lab = 0.1)
+title(ylab="In-Degree", xlab = "In-Degree Age", line=1.5, cex.lab=0.7)
+legend("topleft", legend=c("Simulated", "Real"), col = c("blue", "red"), pch=16, cex=0.6, bty = "n")
+
+plot(y = out_degree_real, x = V(bit_graph)$out_age, log = "xy",col = "red", cex = 0.05, cex.lab = 0.1, 
+     xlab = "", ylab = "", main = "Node Out-Degree Age vs. Out-Degree", cex.main = 0.7, cex.axis = 0.5)
+points(y = out_degree_sim, x = V(sim_bit_g)$out_age, log = "xy", col = "blue", cex = 0.05, cex.lab = 0.1)
+title(ylab="Out-Degree", xlab = "Out-Degree Age", line=1.5, cex.lab=0.7)
+legend("topleft", legend=c("Simulated", "Real"), col = c("blue", "red"), pch=16, cex=0.6, bty = "n")
+
+plot(y = real$in_degree, x = real$total_age, log = "xy", col = "red",  cex = 0.1, cex.lab = 0.1, 
+     xlab = "", ylab = "", main = "Total Age vs. In-Degree (Log)", cex.main = 0.7, cex.axis = 0.5)
+points(y = sim$in_degree, x = sim$total_age,  log = "xy", col = "blue", cex = 0.1, cex.lab = 0.1)
+legend("topleft", legend=c("Simulated", "Real"), col = c("blue", "red"), pch=16, cex=0.6, bty = "n")
+title(ylab="In-Degree", xlab = "Total Age", line=1.5, cex.lab=0.7)
+
+plot(y = real$out_degree, x = real$total_age, log = "xy", col = "red",  cex = 0.1, cex.lab = 0.1, 
+     xlab = "", ylab = "", main = "Total Age vs. Out-Degree (Log)", cex.main = 0.7, cex.axis = 0.5)
+points(y = sim$out_degree, x = sim$total_age, log = "xy",  col = "blue", cex = 0.1, cex.lab = 0.1)
+legend("topleft", legend=c("Simulated", "Real"), col = c("blue", "red"), pch=16, cex=0.6, bty = "n")
+title(ylab="Out-Degree", xlab = "Total Age", line=1.5, cex.lab=0.7)
+```
+
+
+
