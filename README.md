@@ -2,6 +2,6 @@ Linear Preferential Attachment models are frequently used to theoretically expla
 
 `Final_Project.pdf` is the paper. `Kuo_Final_Presentation.pdf` are the slides for an earlier version of the paper. 
 
-`Functions.R`, `Analysis.R`, and `LinearAP.R` are the main R codes which processes the data, simulates the network, and estimates the model. 
+`Functions.R`, `Analysis.R`, and `LinearAP.R` are the main R codes which process the data, simulate the network, and estimate the model. 
 
 `Bit.RData`, `SampleSim.RData`, `updated_graphs.RData` and `dynamics.RData` are the processed datasets. `soc-sign-bitcoinotc.csv` is the raw dataset. 
