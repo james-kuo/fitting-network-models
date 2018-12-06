@@ -14,5 +14,5 @@ A key aspect of the project is to see if degree distribution of the real network
 
 
 ### A Picture of the Network
-This is what the model says how the bitcoin network should look like. 
+This is what the model says how the bitcoin network should look like. Larger nodes have larger degrees (more connected).
 ![](https://github.com/james-kuo/fitting-network-models/blob/master/SimLAP.png)
