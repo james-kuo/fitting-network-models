@@ -9,7 +9,7 @@ Linear Preferential Attachment models are frequently used to theoretically expla
 ## Some Pictures
 
 ### Degree Distribution
-A key aspect of the project is to see if degree distribution of the real network is well-captured by the model. The model hypothesized that both the in-degree and out-degree distributions of the real network will follow power law, meaning there will be a straight line in the log-log plot with a specified slope. Blue dots are what the degree distributions actually look like. Red dots are what the model predicts. A more rigirous statistical test (Kolmogorov-Smirnov test) shows the red and blue dots likely come from different distributions, so the model fails in this aspect.
+A key aspect of the project is to see if degree distribution of the real network is well-captured by the model. The model hypothesized that both the in-degree and out-degree distributions of the real network will follow power law, meaning there will be a straight line in the log-log plot with a specified slope. Blue dots are what the degree distributions actually look like. Red dots are what the model predicts. A more rigorous statistical test (Kolmogorov-Smirnov test) shows the red and blue dots likely come from different distributions, so the model fails in this aspect.
 ![](https://github.com/james-kuo/fitting-network-models/blob/master/degree_distribution.png)
 
 
